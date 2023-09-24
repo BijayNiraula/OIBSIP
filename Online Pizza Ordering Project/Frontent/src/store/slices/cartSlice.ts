@@ -24,7 +24,6 @@ const cartSlice = createSlice({
             }
             state.cartItems.forEach((currentElem, index) => {
                 if (!done) {
-                    console.log(action.payload)
                     if (currentElem._id === action.payload._id) {
                         state.cartItems[index].pizzaQuantity = currentElem.pizzaQuantity + 1;
                         writeLocalStorage("cartsItems", state.cartItems);

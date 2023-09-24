@@ -4,15 +4,11 @@ import { memo, useEffect, useState } from "react"
 import { useQuery } from "@tanstack/react-query";
 import OrderItemCard from './components/OrderItemCard';
 import { GlobalStateInterface, OrderItemInterface } from "../../utilities/interfaces/interface";
-import { Socket } from "socket.io-client";
 import { useSelector } from "react-redux";
 import ReactLoading from 'react-loading';
 import { errorToast, infoToast } from "../../utilities/modules/toastMessage";
-
-
-interface MyOrdersPageProps {
-  socket: Socket
-}
+import { useSocketContext } from "../../Contexts/SocketProvider";
+import { Socket } from "socket.io-client";
 
 interface ApiDataInteface {
   data: OrderItemInterface[],
@@ -20,12 +16,10 @@ interface ApiDataInteface {
   message: string,
 }
 
-
-const MyOrdersPage: React.FC<MyOrdersPageProps> = ({ socket }) => {
-
+const MyOrdersPage: React.FC = () => {
+  const socket: Socket | null = useSocketContext();
   const [orderItems, setOrderItems] = useState([])
   const userId = useSelector((state: GlobalStateInterface) => state.auth.data.userId)
-
   const apiUrl = import.meta.env.VITE_BACKEND_BASE_URL + "/user/orders";
 
   const { data, isLoading, error } = useQuery<ApiDataInteface>({
@@ -43,23 +37,21 @@ const MyOrdersPage: React.FC<MyOrdersPageProps> = ({ socket }) => {
   });
 
   useEffect(() => {
-    socket.emit("join", userId);
-    socket.on("updatedOrderStatus", ({ orderStatus, _id }) => {
-      infoToast("your order is " + orderStatus)
-      setOrderItems((orderItems: OrderItemInterface[]): any => {
-        orderItems.forEach((currElem, index) => {
-          if (currElem._id === _id) {
-            orderItems[index].orderStatus = orderStatus
-          }
+    if (socket) {
+      socket.emit("join", userId);
+      socket.on("updatedOrderStatus", ({ orderStatus, _id }) => {
+        infoToast("your order is " + orderStatus)
+        setOrderItems((orderItems: OrderItemInterface[]): any => {
+          orderItems.forEach((currElem, index) => {
+            if (currElem._id === _id) {
+              orderItems[index].orderStatus = orderStatus
+            }
+          })
+          return [...orderItems]
         })
-        return (orderItems)
       })
-    })
-    return(()=>{
-      socket.disconnect()
-
-    })
-  }, [])
+    }
+  }, [socket])
 
 
   useEffect(() => {
@@ -107,10 +99,6 @@ const MyOrdersPage: React.FC<MyOrdersPageProps> = ({ socket }) => {
         </div>
       </div>
     </section>
-
-
-
-
   )
 }
 

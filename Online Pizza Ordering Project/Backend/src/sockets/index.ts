@@ -3,6 +3,7 @@ import { Server } from "http";
 import EventEmitter from "events";
 export const ordersSocketEventEmitter = new EventEmitter()
 
+let liveTraffic = 0;
 
 export const setupSocketIO = (server: Server) => {
 
@@ -13,12 +14,18 @@ export const setupSocketIO = (server: Server) => {
   });
 
   io.on('connection', (socket: Socket) => {
-    console.log("a user connected")
+    console.log("connected")
+    liveTraffic++;
+    console.log(liveTraffic)
+    io.emit("liveTraffic", liveTraffic);
     socket.on('join', (userId: string) => {
       socket.join(userId);
     });
+    
     socket.on('disconnect', () => {
       console.log('A user disconnected');
+      liveTraffic--;
+      io.emit("liveTraffic", liveTraffic);
     });
   });
 

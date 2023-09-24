@@ -75,7 +75,6 @@ export const removeMenuItemFunction = (_id:string) => {
                 }
             })
             const result = await response.json();
-            console.log(result)
             if (result.status === "success") {
                 dispatch(setStatus(statuses.IDLE))
                 dispatch(remove(_id))
@@ -106,7 +105,6 @@ export const editMenuItemFunction = (bodyData:EditMenuItemFunctionParameterInter
                 }
             })
             const result = await response.json();
-            console.log(result)
             if (result.status === "success") {
                 dispatch(setStatus(statuses.IDLE))
                 dispatch(edit(bodyData))
@@ -117,7 +115,6 @@ export const editMenuItemFunction = (bodyData:EditMenuItemFunctionParameterInter
                 return false
             }
         } catch (err) {
-            console.log(err)
             errorToast("could not connect to the server")
             dispatch(setStatus(statuses.ERROR))
             return false;
@@ -143,7 +140,6 @@ const menuItemsSlice = createSlice({
         },
         remove:(state,action)=>{
             const filterdData=state.menuItems.filter(d=>d._id!=action.payload);
-            console.log(filterdData)
             state.menuItems=filterdData;
 
         },

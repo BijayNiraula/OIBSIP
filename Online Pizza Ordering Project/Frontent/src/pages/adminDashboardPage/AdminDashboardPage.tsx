@@ -6,7 +6,6 @@ import MenuSection from "./components/MenuSection";
 import LogoutBtn from "./components/LogoutBtn";
 
 const AdminDashboardPage: React.FC = () => {
-
     const sidebar = useRef<HTMLDivElement>(null)
     const ordersSection = useRef<HTMLDivElement>(null);
     const menusSection = useRef<HTMLDivElement>(null);

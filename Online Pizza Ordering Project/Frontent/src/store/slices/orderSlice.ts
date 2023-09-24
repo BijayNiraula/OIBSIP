@@ -5,8 +5,6 @@ import { errorToast } from "../../utilities/modules/toastMessage";
 
 const url = `${import.meta.env.VITE_BACKEND_BASE_URL}/admin/orders`;
 
-
-
 export const getOrderItemsFunction = () => {
     return (async function editMenuItemAsyncThunk(dispatch: Dispatch) {
         try {
@@ -18,7 +16,6 @@ export const getOrderItemsFunction = () => {
                 }
             })
             const result = await response.json();
-            console.log(result)
             if (result.status === "success") {
                 dispatch(setStatus(statuses.IDLE))
                 dispatch(add(result.data))
@@ -29,7 +26,6 @@ export const getOrderItemsFunction = () => {
                 return false
             }
         } catch (err) {
-            console.log(err)
             errorToast("could not connect to the server")
             dispatch(setStatus(statuses.ERROR))
             return false;
@@ -69,7 +65,6 @@ export const updateOrderStatusFunction = (bodyData:UpdateOrderStatusFunctionPara
                 return false
             }
         } catch (err) {
-            console.log(err)
             errorToast("could not connect to the server")
             dispatch(setStatus(statuses.ERROR))
             return false;

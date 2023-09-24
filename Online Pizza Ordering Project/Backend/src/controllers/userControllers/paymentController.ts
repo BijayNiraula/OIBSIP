@@ -68,7 +68,7 @@ export const verifyPayment = async (req: any, res: Response, next: NextFunction)
             .update(body.toString())
             .digest("hex");
         if (expectedSignature === razorpay_signature) {
-            const menuItems: MenuItemInterFace[] = await Menu.find({}).select("_id price stock size pizzaName");
+            const menuItems: MenuItemInterFace[] = await Menu.find({}).select("_id price stock size type pizzaName");
             let totalAmountToPaid = 0;
             let orders = ""
             let menuItemsToUpdate: MenuItemsToUpdate[] = []
@@ -89,12 +89,13 @@ export const verifyPayment = async (req: any, res: Response, next: NextFunction)
                 })
                 res.redirect(`${process.env.FRONTENT_BASE_URL}`)
             } else {
-                throw new Error("failed to validate payment")
+                throw new Error("failed to validate the payment amount with orders")
             }
         } else {
             throw new Error("failed to validate payment")
         }
     } catch (err) {
+        console.log(err)
         next(err)
     }
 }

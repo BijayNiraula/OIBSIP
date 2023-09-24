@@ -10,14 +10,8 @@ import { GlobalStateInterface } from './utilities/interfaces/interface'
 import { userRoles } from './utilities/enums/userRoleEnum'
 import './App.css'
 import AdminDashboardPage from './pages/adminDashboardPage/AdminDashboardPage'
-import { Socket } from 'socket.io-client'
 
-interface AppRoutesProps {
-    socket: Socket
-}
-
-const AppRoutes: React.FC<AppRoutesProps> = ({ socket }) => {
-    console.log("rerender")
+const AppRoutes: React.FC = () => {
 
     const userRole = useSelector((state: GlobalStateInterface) => state.auth.data.userRole)
     const authenticated = useSelector((state: GlobalStateInterface) => state.auth.authenticated)
@@ -34,7 +28,7 @@ const AppRoutes: React.FC<AppRoutesProps> = ({ socket }) => {
                 <Fragment>
                     <BrowserRouter>
                         <Routes>
-                            <Route path="*" element={<AdminDashboardPage />} />
+                            <Route path="*" element={<AdminDashboardPage/>} />
                         </Routes>
                     </BrowserRouter>
                 </Fragment>
@@ -46,7 +40,7 @@ const AppRoutes: React.FC<AppRoutesProps> = ({ socket }) => {
                         <Routes>
                             <Route path="*" element={<HomePage />} />
                             <Route path="/carts" element={<CartsPage />} />
-                            <Route path="/MyOrders" element={<MyOrdersPage socket={socket} />} />
+                            <Route path="/MyOrders" element={<MyOrdersPage />} />
                         </Routes>
                     </BrowserRouter>
                 </Fragment>
