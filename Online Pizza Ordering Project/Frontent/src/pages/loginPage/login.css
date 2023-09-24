@@ -1,0 +1,13 @@
+.login_page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_page .body{
+    border-radius: 20px;
+    height: 300px;
+    width: 450px;
+}

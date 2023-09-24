@@ -1,0 +1,31 @@
+.admin_dashboard {
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
+    overflow-y: scroll;
+}
+
+.admin_dashboard .sidebar_section {
+    transition: 0.4s;
+    left: 0px;
+}
+
+.admin_dashboard .dashboard_section{
+    height: 100vh;
+
+}
+
+
+
+
+@media screen and (max-width:991px) {
+
+    .sidebar_section {
+        left: -250px;
+        position: absolute;
+        width: 200px !important;
+        height: 100vh;
+
+    }
+
+}

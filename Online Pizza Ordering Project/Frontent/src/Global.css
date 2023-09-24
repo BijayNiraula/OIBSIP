@@ -1,0 +1,36 @@
+.fw-6 {
+    font-weight: 700;
+}
+
+.fw-5 {
+    font-weight: 600;
+}
+
+.fw-4 {
+    font-weight: 500;
+}
+
+.fw-3 {
+    font-weight: 400;
+}
+
+.fw-2 {
+    font-weight: 300;
+}
+
+.fw-1 {
+    font-weight: 200;
+}
+
+
+
+
+
+
+.text_light {
+    color: #c2bebe !important;
+}
+
+.bg_light {
+    background-color: #c2bebe !important;
+}
