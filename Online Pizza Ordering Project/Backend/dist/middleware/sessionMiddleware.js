@@ -8,7 +8,7 @@ const sessionMiddleware = session({
     proxy: true,
     name: 'MyCoolWebAppCookieName12332112',
     cookie: {
-        secure: true,
+        secure: false,
         httpOnly: false,
         sameSite: 'none'
     }
