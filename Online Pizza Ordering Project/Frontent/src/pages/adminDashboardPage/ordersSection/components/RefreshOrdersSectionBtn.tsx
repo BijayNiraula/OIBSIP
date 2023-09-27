@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { getOrderItemsFunction, removeAll } from '../../../store/slices/orderSlice';
+import { getOrderItemsFunction, removeAll } from '../../../../store/slices/orderSlice';
 
 const RefreshOrdersSectionBtn = () => {
   

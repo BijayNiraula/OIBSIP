@@ -1,16 +1,16 @@
 import { Modal } from "react-bootstrap";
 import { Fragment, memo, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux";
-import { hideModal } from "../../../store/slices/controlEditMenuModalSlice";
-import { GlobalStateInterface } from "../../../utilities/interfaces/interface";
-import { editMenuItemFunction } from "../../../store/slices/menuSlice";
+import { hideModal } from "../../../../store/slices/controlEditMenuModalSlice";
+import { GlobalStateInterface } from "../../../../utilities/interfaces/interface";
+import { editMenuItemFunction } from "../../../../store/slices/menuSlice";
 import ReactLoading from 'react-loading';
 
 const EditMenuItemModal = () => {
 
   const { modalState, data } = useSelector((state: GlobalStateInterface) => state.controlEditMenuModal)
-  const loadingBtn = useRef<any>();
-  const saveBtn = useRef<any>();
+  const loadingBtn = useRef<HTMLButtonElement>(null);
+  const saveBtn = useRef<HTMLButtonElement>(null);
   const dispatch: any = useDispatch()
 
   const handleClose = () => {
@@ -18,7 +18,7 @@ const EditMenuItemModal = () => {
   }
 
   const handleEditMenuItem = async (e: any) => {
-    if (e) {
+    if (e && loadingBtn.current && saveBtn.current) {
       e.preventDefault();
       loadingBtn.current.style.display = "flex"
       saveBtn.current.style.display = "none"

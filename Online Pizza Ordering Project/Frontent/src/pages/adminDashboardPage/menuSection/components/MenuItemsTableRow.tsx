@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { showModal } from '../../../store/slices/controlEditMenuModalSlice';
+import { showModal } from '../../../../store/slices/controlEditMenuModalSlice';
 import { useDispatch } from 'react-redux';
-import { MenuItemInterFace } from '../../../utilities/interfaces/interface';
+import { MenuItemInterFace } from '../../../../utilities/interfaces/interface';
 import DeleteMenuItemBtn from './DeleteMenuItemBtn';
 const MenuItemsTableRow: React.FC<MenuItemInterFace> = ({ _id, pizzaName, size, type, price, description, stock }) => {
   const dispatch: any = useDispatch();

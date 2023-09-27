@@ -1,6 +1,6 @@
 import { useState, memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeMenuItemFunction } from '../../../store/slices/menuSlice';
+import { removeMenuItemFunction } from '../../../../store/slices/menuSlice';
 import ReactLoading from 'react-loading';
 interface DeleteMenuItemBtnProps {
     _id: string

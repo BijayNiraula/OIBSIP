@@ -27,13 +27,13 @@ const CartItemCard: React.FC<CartItemInterface> = ({ _id, type, price, pizzaName
       </div>
       <div className="col-3 col-sm-2  d-flex align-items-center">
         <span className="d-flex w-100 ">
-          <button onClick={() => handleChange(pizzaQuantity - 1)} className=" border border-1 text-center  fs-4" >+</button>
+          <button onClick={() => handleChange(pizzaQuantity - 1)} className=" border border-1 text-center  fs-4" >-</button>
           <span className="px-2 d-flex align-items-center  border border-dark">
             {
               pizzaQuantity
             }
           </span>
-          <button onClick={() => handleChange(pizzaQuantity + 1)} className=" text-center border border-1 fs-4 ">-</button>
+          <button onClick={() => handleChange(pizzaQuantity + 1)} className=" text-center border border-1 fs-4 ">+</button>
         </span>
       </div>
       <div className="col-1 col-sm-2  d-flex align-items-center">

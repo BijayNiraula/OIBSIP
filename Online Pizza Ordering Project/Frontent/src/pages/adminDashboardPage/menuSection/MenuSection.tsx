@@ -1,13 +1,13 @@
 import { memo, useEffect } from 'react';
-import MenuItemsTableRow from './MenuItemsTableRow';
-import AddMenuItemModal from './AddMenuItemModal';
-import EditMenuItemModal from './EditMenuItemModal';
+import MenuItemsTableRow from './components/MenuItemsTableRow';
+import AddMenuItemModal from './components/AddMenuItemModal';
+import EditMenuItemModal from './components/EditMenuItemModal';
 import { statuses } from '../../../utilities/enums/statusEnum';
 import { useDispatch, useSelector } from 'react-redux';
 import { GlobalStateInterface, MenuItemInterFace } from '../../../utilities/interfaces/interface';
 import { getMenuItemsFunction } from '../../../store/slices/menuSlice';
 import ReactLoading from 'react-loading';
-import RefreshMenuSectionBtn from './RefreshMenuSectionBtn';
+import RefreshMenuSectionBtn from './components/RefreshMenuSectionBtn';
 
 const MenuSection: React.FC = () => {
 

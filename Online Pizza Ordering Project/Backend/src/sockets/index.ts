@@ -14,7 +14,7 @@ export const setupSocketIO = (server: Server) => {
   });
 
   io.on('connection', (socket: Socket) => {
-    console.log("connected")
+    console.log(" a user connected : "+socket.id)
     liveTraffic++;
     console.log(liveTraffic)
     io.emit("liveTraffic", liveTraffic);
@@ -23,7 +23,7 @@ export const setupSocketIO = (server: Server) => {
     });
     
     socket.on('disconnect', () => {
-      console.log('A user disconnected');
+      console.log('a user disconnected : '+socket.id);
       liveTraffic--;
       io.emit("liveTraffic", liveTraffic);
     });

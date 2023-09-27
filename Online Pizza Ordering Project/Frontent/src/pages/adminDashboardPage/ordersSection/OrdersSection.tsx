@@ -1,11 +1,11 @@
 import { memo, useEffect } from 'react';
-import OrdersTableRow from './OrdersTableRow';
+import OrdersTableRow from './components/OrdersTableRow';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrderItemsFunction } from '../../../store/slices/orderSlice';
 import { GlobalStateInterface, OrderItemInterface } from '../../../utilities/interfaces/interface';
 import { statuses } from '../../../utilities/enums/statusEnum';
 import ReactLoading from 'react-loading';
-import RefreshOrdersSectionBtn from './RefreshOrdersSectionBtn';
+import RefreshOrdersSectionBtn from './components/RefreshOrdersSectionBtn';
 
 const OrdersSection = () => {
   const dispatch = useDispatch<any>()

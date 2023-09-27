@@ -1,20 +1,20 @@
 import { Button, Modal } from "react-bootstrap";
 import { Fragment, useRef, useState, memo } from "react"
 import { useDispatch } from "react-redux";
-import { addMenuItemFunction } from "../../../store/slices/menuSlice";
+import { addMenuItemFunction } from "../../../../store/slices/menuSlice";
 import ReactLoading from 'react-loading';
 
 const AddMenuItemModal = () => {
   const dispatch: any = useDispatch();
   const [show, setShow] = useState(false);
-  const loadingBtn = useRef<any>();
-  const saveBtn = useRef<any>();
+  const loadingBtn = useRef<HTMLButtonElement>(null);
+  const saveBtn = useRef<HTMLButtonElement>(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleAddMenuItem = async (e: any) => {
-    if (e) {
+    if (e && loadingBtn.current && saveBtn.current) {
       e.preventDefault();
       loadingBtn.current.style.display = "flex"
       saveBtn.current.style.display = "none"

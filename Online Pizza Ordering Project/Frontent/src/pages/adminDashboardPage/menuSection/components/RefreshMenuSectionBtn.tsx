@@ -1,8 +1,8 @@
 import React from 'react'
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { getMenuItemsFunction } from '../../../store/slices/menuSlice';
-import { removeAll } from '../../../store/slices/menuSlice';
+import { getMenuItemsFunction } from '../../../../store/slices/menuSlice';
+import { removeAll } from '../../../../store/slices/menuSlice';
 
 const RefreshMenuSectionBtn: React.FC = () => {
 

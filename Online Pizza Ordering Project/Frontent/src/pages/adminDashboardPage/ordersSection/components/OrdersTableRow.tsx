@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { OrderItemInterface } from "../../../utilities/interfaces/interface"
+import { OrderItemInterface } from "../../../../utilities/interfaces/interface"
 import OrderStatusDropDown from "./OrderStatusDropDown";
 
 const OrdersTableRow: React.FC<OrderItemInterface> = ({_id, userId,orderStatus,time, orders, paidAmt, deliveryLocation, customerPhoneNumber, orderId }) => {

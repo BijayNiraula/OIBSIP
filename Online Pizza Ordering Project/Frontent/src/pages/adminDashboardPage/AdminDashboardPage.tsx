@@ -1,8 +1,8 @@
 import "./admin.css"
 import { useRef, memo } from 'react';
-import DashboardSection from "./components/DashboardSection";
-import OrdersSection from "./components/OrdersSection";
-import MenuSection from "./components/MenuSection";
+import DashboardSection from "./dashboardSection/DashboardSection";
+import OrdersSection from "./ordersSection/OrdersSection";
+import MenuSection from "./menuSection/MenuSection";
 import LogoutBtn from "./components/LogoutBtn";
 
 const AdminDashboardPage: React.FC = () => {
@@ -40,7 +40,7 @@ const AdminDashboardPage: React.FC = () => {
                     </svg>
                 </button>
             </div>
-            <div className="row w-100 h-100">
+            <div className="row w-100 h-100 m-0 p-0 ">
                 <div className="col-lg-2  bg-dark sidebar_section" ref={sidebar}>
                     <div className="d-flex justify-content-end d-lg-none mt-2 me-2" data-bs-theme="dark">
                         <button type="button" onClick={() => controlSidebar(false)} className="btn-close" aria-label="Close"></button>
@@ -76,7 +76,7 @@ const AdminDashboardPage: React.FC = () => {
                         </button>
                     </div>
                 </div>
-                <div className="col-lg-10 h-100  col-12 components_sections" style={{ height: "100vh", overflowY: "scroll" }}>
+                <div className="col-lg-10 h-100   col-12  border border-dark" style={{ height: "100vh", overflowY: "scroll" }}>
                     <div className="" ref={dashboardSection}>
                         <DashboardSection />
                     </div>

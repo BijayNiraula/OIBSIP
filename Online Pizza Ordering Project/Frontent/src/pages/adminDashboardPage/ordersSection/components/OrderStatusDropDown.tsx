@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateOrderStatusFunction } from '../../../store/slices/orderSlice';
+import { updateOrderStatusFunction } from '../../../../store/slices/orderSlice';
 
 interface OrderStatusDropDownProps{
     orderId:string,

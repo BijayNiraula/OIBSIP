@@ -60,9 +60,6 @@ export const logoutFunction = () => {
 
 
 
-
-
-
 const initialState: AuthStateInterface = {
     status: statuses.LOADING,
     authenticated: false,
