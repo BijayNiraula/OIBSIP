@@ -3,7 +3,7 @@ import "./login.css"
 import {memo} from 'react';
 const LoginPage = () => {
    const googleLogin=()=>{
-    window.open("http://localhost:8000/authenticate/google/login","_self")
+    window.open(`${import.meta.env.VITE_BACKEND_BASE_URL}/authenticate/google/login`,"_self")
    }
 
   return (

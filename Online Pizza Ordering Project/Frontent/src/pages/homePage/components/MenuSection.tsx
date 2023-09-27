@@ -22,7 +22,6 @@ const MenuSection: React.FC = () => {
         }
     });
 
-
     if (!isLoading && !error && data) {
         vegItems = data.filter((menuItem) => menuItem.type === "veg")
         non_vegItems = data.filter((menuItem) => menuItem.type === "non-veg")
