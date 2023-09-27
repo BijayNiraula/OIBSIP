@@ -5,8 +5,12 @@ const sessionMiddleware = session({
     secret: process.env.SESSION_KEY,
     resave: false,
     saveUninitialized: true,
+    proxy: true,
+    name: 'MyCoolWebAppCookieName12332112',
     cookie: {
-        secure: false, // Allow cookies over both HTTP and HTTPS
-    },
+        secure: true,
+        httpOnly: false,
+        sameSite: 'none'
+    }
 });
 exports.default = sessionMiddleware;
