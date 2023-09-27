@@ -26,8 +26,6 @@ passport.use(new GoogleStrategy({
         const configsFilePath = path_1.default.join(__dirname, "./configs.json");
         const configsString = yield (0, fs_1.readFileSync)(configsFilePath, "utf8");
         const configsJson = JSON.parse(configsString);
-        console.log(configsJson);
-        console.log(profile);
         if (configsJson.adminGmail === profile.emails[0].value) {
             profile.userRole = "admin";
         }
