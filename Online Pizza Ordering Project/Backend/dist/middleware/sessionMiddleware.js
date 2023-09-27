@@ -6,7 +6,7 @@ const sessionMiddleware = session({
     resave: false,
     saveUninitialized: true,
     proxy: true,
-    name: 'MyCoolWebAppCookieName12332112',
+    name: 'session3749912qw',
     cookie: {
         secure: false,
         httpOnly: false,
