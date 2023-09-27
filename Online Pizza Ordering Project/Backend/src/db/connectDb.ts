@@ -8,8 +8,6 @@ const connectDb = async () => {
     const connectionOptions: ConnectOptions = {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false,
     } as ConnectOptions
 
     try {

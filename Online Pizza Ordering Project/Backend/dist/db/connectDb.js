@@ -18,8 +18,6 @@ const connectDb = () => __awaiter(void 0, void 0, void 0, function* () {
     const connectionOptions = {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false,
     };
     try {
         if (!dbURI) {
