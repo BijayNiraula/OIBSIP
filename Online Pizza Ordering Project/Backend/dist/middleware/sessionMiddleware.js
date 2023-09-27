@@ -9,7 +9,7 @@ const sessionMiddleware = session({
     name: 'session3749912qw',
     cookie: {
         secure: false,
-        httpOnly: false,
+        httpOnly: true,
         sameSite: 'none'
     }
 });
