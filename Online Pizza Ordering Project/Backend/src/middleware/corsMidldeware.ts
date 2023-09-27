@@ -1,7 +1,7 @@
-const cors=require('cors')
+import cors,{CorsOptions} from "cors"
 
-const corsOptions={
-    origin:[process.env.FRONTENT_BASE_URL,"https://razorpay.com/"],
+const corsOptions:CorsOptions={
+    origin:[process.env.FRONTENT_BASE_URL as string ,"https://razorpay.com/"],
     methods:'GET,POST,PUT,DELETE',
     credentials:true
 

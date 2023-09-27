@@ -1,29 +1,28 @@
 import mongoose from "mongoose";
 import { ConnectOptions } from "mongoose";
 
+const dbURI = process.env.DB_URI;
 
-const dbURI=process.env.DB_URI;
+const connectDb = async () => {
 
-
-
-const connectDb=async()=>{
-
-    const connectionOptions:ConnectOptions={
-        useNewUrlParser:true,
-        useUnifiedTopology:true,
+    const connectionOptions: ConnectOptions = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
     } as ConnectOptions
 
-    try{
-        if(!dbURI){
-           console.log("Db url is undefined")
-           return ;
+    try {
+        if (!dbURI) {
+            console.log("Db url is undefined")
+            return;
         }
-        await mongoose.connect(dbURI,connectionOptions)
+        await mongoose.connect(dbURI, connectionOptions)
         console.log("database connection successfull")
-    }catch(e){
+    } catch (e) {
         console.log("could not able to connect to the database");
     }
-    
+
 
 }
 
