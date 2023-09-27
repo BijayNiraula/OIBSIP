@@ -1,16 +1,16 @@
-const session=require("express-session");
+const session = require("express-session");
 
-const sessionMiddleware=session({
-    secret:process.env.SESSION_KEY ,
-    resave: false,
-    saveUninitialized: true,
-    proxy: true, // Required for Heroku & Digital Ocean (regarding X-Forwarded-For)
-    name: 'MyCoolWebAppCookieName12332112', // This needs to be unique per-host.
-    cookie: {
-      secure: true, // required for cookies to work on HTTPS
-      httpOnly: false,
-      sameSite: 'none'
-    }
-  })
+const sessionMiddleware = session({
+  secret: process.env.SESSION_KEY,
+  resave: false,
+  saveUninitialized: true,
+  proxy: true,
+  name: 'MyCoolWebAppCookieName12332112',
+  cookie: {
+    secure: false,
+    httpOnly: false,
+    sameSite: 'none'
+  }
+})
 
-  export default sessionMiddleware;
+export default sessionMiddleware;

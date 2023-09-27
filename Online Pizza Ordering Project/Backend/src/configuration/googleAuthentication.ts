@@ -15,7 +15,7 @@ passport.use(
 			const configsFilePath = path.join(__dirname, "./configs.json");
 			const configsString = await readFileSync(configsFilePath, "utf8");
 			const configsJson = JSON.parse(configsString);
-			console.log()
+			console.log(configsJson)
 			if (configsJson.adminGmail === profile.emails[0].value) {
 				profile.userRole = "admin"
 			} else {
