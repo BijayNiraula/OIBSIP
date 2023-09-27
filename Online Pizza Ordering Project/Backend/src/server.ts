@@ -13,7 +13,7 @@ const passport=require("passport")
 import http from "http"
 import { setupSocketIO } from "./sockets";
 
-const PORT=8000;
+const PORT=process.env.port || 8000 ;
 
 const app=express();
 

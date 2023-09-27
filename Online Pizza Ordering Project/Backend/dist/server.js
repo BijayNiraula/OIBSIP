@@ -25,7 +25,7 @@ const connectDb_1 = __importDefault(require("./db/connectDb"));
 const passport = require("passport");
 const http_1 = __importDefault(require("http"));
 const sockets_1 = require("./sockets");
-const PORT = 8000;
+const PORT = process.env.port || 8000;
 const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 (0, sockets_1.setupSocketIO)(server);
