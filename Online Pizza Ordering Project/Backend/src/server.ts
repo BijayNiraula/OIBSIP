@@ -13,10 +13,10 @@ const passport = require("passport")
 import http from "http"
 import { setupSocketIO } from "./sockets";
 
-const PORT = process.env.port || 8000;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
-
+app.set("trust proxy", 1);
 const server = http.createServer(app)
 setupSocketIO(server)
 
