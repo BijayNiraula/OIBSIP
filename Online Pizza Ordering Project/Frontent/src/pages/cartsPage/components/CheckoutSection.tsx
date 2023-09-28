@@ -14,7 +14,7 @@ const CheckoutSection: React.FC<OrderNowSectionProps> = ({ cartItems }) => {
   const authenticated = useSelector((state: GlobalStateInterface) => state.auth.authenticated)
   const email = useSelector((state: GlobalStateInterface) => state.auth.data.email);
   const navigate = useNavigate();
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
   let subTotal = 0;
 
   if (cartItems.length) {
@@ -36,7 +36,7 @@ const CheckoutSection: React.FC<OrderNowSectionProps> = ({ cartItems }) => {
     const deliveryLocation = e.target[1].value;
     const result = await fetchData(`${BackendBaseUrl}/user/payment/checkout`, {
       method: "POST",
-      body: JSON.stringify({ orders: cartItems}),
+      body: JSON.stringify({ orders: cartItems }),
       credentials: "include",
       headers: {
         "content-type": "application/json"
@@ -49,14 +49,14 @@ const CheckoutSection: React.FC<OrderNowSectionProps> = ({ cartItems }) => {
     console.log(result)
     const ordersItems = encodeURIComponent(JSON.stringify(cartItems))
     var options = {
-      "key": result.razorKeyId, // Enter the Key ID generated from the Dashboard
-      "amount": result.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "key": result.razorKeyId,
+      "amount": result.order.amount, 
       "currency": "INR",
       "name": "Pizza Hub",
       "description": "Test Transaction",
-      "image": "https://example.com/your_logo",
-      "order_id": result.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      "callback_url": `http://localhost:8000/user/payment/verifyPayment?ordersItems=${ordersItems}`,
+      "image": "",
+      "order_id": result.order.id, 
+      "callback_url": `${import.meta.env.VITE_BACKEND_BASE_URL}/user/payment/verifyPayment?ordersItems=${ordersItems}`,
       "prefill": {
         "email": email,
         "contact": customerNumber
@@ -69,9 +69,9 @@ const CheckoutSection: React.FC<OrderNowSectionProps> = ({ cartItems }) => {
         "color": "#3399cc"
       }
     };
-    var rzp1 = new (window as any).Razorpay(options) ;
+    var rzp1 = new (window as any).Razorpay(options);
     rzp1.open()
-   dispatch(removeAll());
+    dispatch(removeAll());
   }
 
   return (
