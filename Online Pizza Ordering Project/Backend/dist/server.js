@@ -27,7 +27,6 @@ const http_1 = __importDefault(require("http"));
 const sockets_1 = require("./sockets");
 const PORT = process.env.PORT || 8000;
 const app = (0, express_1.default)();
-app.set("trust proxy", 1);
 const server = http_1.default.createServer(app);
 (0, sockets_1.setupSocketIO)(server);
 app.use(sessionMiddleware_1.default);
