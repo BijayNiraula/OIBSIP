@@ -11,6 +11,7 @@ const sessionMiddleware = (0, express_session_1.default)({
     store: connect_mongo_1.default.create({ mongoUrl: mongoDbURI }),
     saveUninitialized: false,
     resave: false,
+    proxy: true,
     cookie: {
         maxAge: 60 * 1000 * 60 * 24
     }
