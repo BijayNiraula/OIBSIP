@@ -15,9 +15,8 @@ const setupSocketIO = (server) => {
         }
     });
     io.on('connection', (socket) => {
-        console.log(" a user connected : " + socket.id);
         liveTraffic++;
-        console.log(liveTraffic);
+        console.log(" a user connected : " + socket.id, `live traffic : ${liveTraffic} `);
         io.emit("liveTraffic", liveTraffic);
         socket.on('join', (userId) => {
             socket.join(userId);
@@ -25,7 +24,7 @@ const setupSocketIO = (server) => {
         socket.on('disconnect', () => {
             console.log('a user disconnected : ' + socket.id);
             liveTraffic--;
-            io.emit("liveTraffic", liveTraffic);
+            io.emit("liveTraffic", liveTraffic, `live traffic : ${liveTraffic} `);
         });
     });
     exports.ordersSocketEventEmitter.on("updateOrderStatus", ({ userId, _id, orderStatus }) => {

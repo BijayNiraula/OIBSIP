@@ -17,7 +17,6 @@ export const authenticate = () => {
                 }
             })
             const result = await response.json();
-            console.log(result)
             if (result.status === "success") {
                 dispatch(setStatus(statuses.IDLE))
                 dispatch(login(result.data))

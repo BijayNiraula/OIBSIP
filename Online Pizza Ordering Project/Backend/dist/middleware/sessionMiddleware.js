@@ -7,7 +7,7 @@ const express_session_1 = __importDefault(require("express-session"));
 const connect_mongo_1 = __importDefault(require("connect-mongo"));
 const mongoDbURI = process.env.DB_URI;
 const sessionMiddleware = (0, express_session_1.default)({
-    secret: 'scret',
+    secret: process.env.SESSION_KEY,
     store: connect_mongo_1.default.create({ mongoUrl: mongoDbURI }),
     saveUninitialized: false,
     resave: false,

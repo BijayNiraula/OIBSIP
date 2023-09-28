@@ -14,18 +14,17 @@ export const setupSocketIO = (server: Server) => {
   });
 
   io.on('connection', (socket: Socket) => {
-    console.log(" a user connected : "+socket.id)
     liveTraffic++;
-    console.log(liveTraffic)
+    console.log(" a user connected : " + socket.id, `live traffic : ${liveTraffic} `)
     io.emit("liveTraffic", liveTraffic);
     socket.on('join', (userId: string) => {
       socket.join(userId);
     });
-    
+
     socket.on('disconnect', () => {
-      console.log('a user disconnected : '+socket.id);
+      console.log('a user disconnected : ' + socket.id);
       liveTraffic--;
-      io.emit("liveTraffic", liveTraffic);
+      io.emit("liveTraffic", liveTraffic, `live traffic : ${liveTraffic} `);
     });
   });
 
