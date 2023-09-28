@@ -10,7 +10,8 @@ const sessionMiddleware = session({
     resave: false,
     proxy: true,
     cookie: {
-        maxAge: 60 * 1000 * 60 * 24
+        maxAge: 60 * 1000 * 60 * 24,
+        secure: true
     }
 });
 

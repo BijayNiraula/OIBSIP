@@ -13,7 +13,8 @@ const sessionMiddleware = (0, express_session_1.default)({
     resave: false,
     proxy: true,
     cookie: {
-        maxAge: 60 * 1000 * 60 * 24
+        maxAge: 60 * 1000 * 60 * 24,
+        secure: true
     }
 });
 exports.default = sessionMiddleware;

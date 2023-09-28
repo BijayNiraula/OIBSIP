@@ -69,7 +69,7 @@ const CheckoutSection: React.FC<OrderNowSectionProps> = ({ cartItems }) => {
         "color": "#3399cc"
       }
     };
-    var rzp1 = new window.Razorpay(options);
+    var rzp1 = new (window as any).Razorpay(options) ;
     rzp1.open()
    dispatch(removeAll());
   }
