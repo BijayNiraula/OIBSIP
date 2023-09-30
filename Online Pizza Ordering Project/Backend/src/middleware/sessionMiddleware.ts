@@ -11,8 +11,8 @@ const sessionMiddleware = session({
     proxy: true,
     cookie: {
         maxAge: 60 * 1000 * 60 * 24,
-        secure: true,     // remove this line for local server
-        sameSite: 'none', // remove this line for local server
+        // secure: true,     // remove this line for local server
+        // sameSite: 'none', // remove this line for local server
         httpOnly: true
     }
 });

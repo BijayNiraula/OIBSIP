@@ -1,12 +1,12 @@
 
 import { memo } from "react"
-import { logout } from "../../../store/slices/authSlice"
+import {logoutFunction } from "../../../store/slices/authSlice"
 import { useDispatch } from "react-redux"
 
 const LogoutBtn: React.FC = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<any>()
     const handleLogout = () => {
-        dispatch(logout())
+        dispatch(logoutFunction())
     }
     return (
         <button className="btn btn-danger py-0  text-light " onClick={handleLogout}>logout</button>
