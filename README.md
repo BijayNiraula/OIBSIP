@@ -8,8 +8,10 @@ Welcome to PizzaHub, an online pizza ordering web application built with TypeScr
 - Payment Gateway: Razorpay
 
 ## Live Demo
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7113167692286627841" height="675" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 You can access a live demo of the application at [PizzaHub Live Demo](https://pizahub.netlify.app). Please note that the Backend server hosted on Render.com may take some time to load data on the first visit, as the free server instance may be sleeping.
+
+## Demo video
+[demo video](https://www.linkedin.com/posts/bijay-niraula-067735275_oasisinfobyte-activity-7113167792819892226-7hIi?utm_source=share&utm_medium=member_desktop)
 
 ## Installation and Setup
 To get started, clone this repository to your local machine using the following command:
@@ -47,6 +49,7 @@ cd Backend
 
 # Install the necessary dependencies
 npm install
+
 
 # Create a .env file in the Backend directory and fill in the necessary credentials. You can refer to the .env.example file in the GitHub repository to know the variable names.
 
