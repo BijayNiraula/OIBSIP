@@ -3,8 +3,7 @@ import "./myOrder.css"
 import { memo, useEffect, useState } from "react"
 import { useQuery } from "@tanstack/react-query";
 import OrderItemCard from './components/OrderItemCard';
-import { GlobalStateInterface, OrderItemInterface } from "../../utilities/interfaces/interface";
-import { useSelector } from "react-redux";
+import { OrderItemInterface } from "../../utilities/interfaces/interface";
 import ReactLoading from 'react-loading';
 import { errorToast, infoToast } from "../../utilities/modules/toastMessage";
 import { useSocketContext } from "../../Contexts/SocketProvider";
@@ -19,7 +18,6 @@ interface ApiDataInteface {
 const MyOrdersPage: React.FC = () => {
   const socket: Socket | null = useSocketContext();
   const [orderItems, setOrderItems] = useState([])
-  const userId = useSelector((state: GlobalStateInterface) => state.auth.data.userId)
   const apiUrl = import.meta.env.VITE_BACKEND_BASE_URL + "/user/orders";
 
   const { data, isLoading, error } = useQuery<ApiDataInteface>({
@@ -38,7 +36,6 @@ const MyOrdersPage: React.FC = () => {
 
   useEffect(() => {
     if (socket) {
-      socket.emit("join", userId);
       socket.on("updatedOrderStatus", ({ orderStatus, _id }) => {
         infoToast("your order is " + orderStatus)
         setOrderItems((orderItems: OrderItemInterface[]): any => {
@@ -50,6 +47,11 @@ const MyOrdersPage: React.FC = () => {
           return [...orderItems]
         })
       })
+    }
+    return () => {
+      if (socket) {
+        socket.off("updatedOrderStatus")
+      }
     }
   }, [socket])
 

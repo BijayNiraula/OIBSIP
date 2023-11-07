@@ -10,10 +10,12 @@ import { GlobalStateInterface } from './utilities/interfaces/interface'
 import { userRoles } from './utilities/enums/userRoleEnum'
 import './App.css'
 import AdminDashboardPage from './pages/adminDashboardPage/AdminDashboardPage'
+import { useSocketContext } from './Contexts/SocketProvider'
+import { Socket } from 'socket.io-client'
 
 const AppRoutes: React.FC = () => {
-
-    const userRole = useSelector((state: GlobalStateInterface) => state.auth.data.userRole)
+    const socket: Socket | null = useSocketContext()
+    const { userRole, userId } = useSelector((state: GlobalStateInterface) => state.auth.data)
     const authenticated = useSelector((state: GlobalStateInterface) => state.auth.authenticated)
     const dispatch: any = useDispatch()
 
@@ -22,13 +24,16 @@ const AppRoutes: React.FC = () => {
     }, [])
 
     if (authenticated) {
+        if (socket) {
+            socket.emit("join", userId)
+        }
         if (userRole === userRoles.ADMIN) {
 
             return (
                 <Fragment>
                     <BrowserRouter>
                         <Routes>
-                            <Route path="*" element={<AdminDashboardPage/>} />
+                            <Route path="*" element={<AdminDashboardPage />} />
                         </Routes>
                     </BrowserRouter>
                 </Fragment>
